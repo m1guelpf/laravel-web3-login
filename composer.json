@@ -1,0 +1,55 @@
+{
+    "name": "m1guelpf/laravel-web3-login",
+    "description": "Allow your users to login with their Ethereum wallets",
+    "keywords": [
+        "m1guelpf",
+        "web3",
+        "laravel-web3-login"
+    ],
+    "homepage": "https://github.com/m1guelpf/laravel-web3-login",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Miguel Piedrafita",
+            "email": "soy@miguelpiedrafita.com",
+            "role": "Developer",
+            "homepage": "https://miguelpiedrafita.com"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "illuminate/auth": "^8.33",
+        "illuminate/config": "^8.33",
+        "illuminate/contracts": "^8.0",
+        "illuminate/database": "^8.0",
+        "illuminate/http": "^8.0",
+        "illuminate/support": "^8.33",
+        "illuminate/validation": "^8.0",
+        "kornrunner/keccak": "^1.1",
+        "simplito/elliptic-php": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "M1guelpf\\Web3Login\\": "src"
+        }
+    },
+    "scripts": {
+        "psalm": "vendor/bin/psalm",
+        "cs": "php-cs-fixer fix . --config=.php_cs --allow-risky=yes"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "M1guelpf\\Web3Login\\Web3LoginServiceProvider"
+            ],
+            "aliases": {
+                "Signature": "M1guelpf\\Web3Login\\Facades\\Signature"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
