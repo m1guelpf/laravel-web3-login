@@ -26,7 +26,7 @@ class Web3Login
     public static $retrieveUserCallback;
 
     /**
-     * Register a callback that is responsible for retrieving the user authenticated by Apple.
+     * Register a callback that is responsible for retrieving the user by their wallet.
      *
      * @param  callable  $callback
      * @return void
