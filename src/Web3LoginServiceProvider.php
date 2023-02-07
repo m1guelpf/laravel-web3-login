@@ -15,5 +15,13 @@ class Web3LoginServiceProvider extends ServiceProvider
         if (Web3Login::$runsMigrations) {
             $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         }
+
+        $this->publishes([
+            __DIR__.'/../config/web3.php' => config_path('web3.php'),
+        ], 'config');
+
+        $this->mergeConfigFrom(
+            __DIR__.'/../config/web3.php', 'web3'
+        );
     }
 }
