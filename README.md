@@ -71,6 +71,27 @@ const onClick = async () => {
 };
 ```
 
+## Configs
+
+If you want to change the message that is sent to the user, you can publish the config file and change it.
+
+```bash
+php artisan vendor:publish --provider="M1guelpf\Web3Login\Web3LoginServiceProvider" --tag="config"
+```
+
+This command will publish a config file to `config/web3.php` with the following options:
+
+```php
+[
+	// Message that is returned to the user in the /_web3/signature route
+	'message' => "Hey! Sign this message to prove you have access to this wallet. This won't cost you anything.\n\nSecurity code (you can ignore this): :nonce:",
+	// Routes created by this package
+    'routes' => ['login', 'register', 'link', 'signature'],
+]
+```
+
+For example, if you want to disable user registration through this package, you can remove `register` from `routes` config.
+
 ## Contributing
 
 Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
