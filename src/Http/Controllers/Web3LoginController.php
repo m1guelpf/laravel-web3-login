@@ -76,8 +76,13 @@ class Web3LoginController
             'address' => ['required', 'string', 'regex:/0x[a-fA-F0-9]{40}/m'],
             'signature' => ['required', 'string', 'regex:/^0x([A-Fa-f0-9]{130})$/'],
         ]);
+        $nonce = $request->session()->pull('nonce');
 
-        if (! Signature::verify($request->session()->pull('nonce'), $request->input('signature'), $request->input('address'))) {
+        if (!$nonce) {
+            throw ValidationException::withMessages(['signature' => 'Nonce not found. Please generate a sign message first.']);
+        }
+
+        if (! Signature::verify($nonce, $request->input('signature'), $request->input('address'))) {
             throw ValidationException::withMessages(['signature' => 'Signature verification failed.']);
         }
     }
